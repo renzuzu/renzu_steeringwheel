@@ -91,6 +91,7 @@ Citizen.CreateThread(function()
 			exports.renzu_tuners:SetVehicleManualGears(vehicle)
 			wheels = false
 			lastgear = -1
+			SetVehicleHandlingInt(GetVehiclePedIsIn(PlayerPedId(),true) , "CHandlingData", "strHandlingFlags", vehicleflags)
         end
 		Citizen.Wait(sleep)
     end
