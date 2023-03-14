@@ -2,7 +2,7 @@ if GetResourceState('renzu_tuners') ~= 'started' then print("renzu_tuners missin
 local wheels = false
 local ped
 local vehicle
-local maxgear = nil
+local maxgear = 1
 local vehicleflags
 local invehicle = false
 RegisterCommand('steeringwheel', function(source, args, raw)
@@ -15,7 +15,7 @@ RegisterCommand('steeringwheel', function(source, args, raw)
 	})
 end)
 
-local throttle = nil
+local throttle = 0.0
 local brake
 local clutch
 local lastgear = -1
@@ -87,6 +87,10 @@ Citizen.CreateThread(function()
 					SetVehicleClutch(vehicle,1.0 - clutch+0.0)
 				end
 		    end
+		elseif wheels then
+			exports.renzu_tuners:SetVehicleManualGears(vehicle)
+			wheels = false
+			lastgear = -1
         end
 		Citizen.Wait(sleep)
     end
