@@ -75,7 +75,6 @@ Citizen.CreateThread(function()
 				SetControlNormal(0, 72, throttle+0.0)
 				SetControlNormal(1, 72, throttle+0.0)
 		        SetControlNormal(2, 72, throttle+0.0)
-				SetVehicleHandlingInt(vehicle , "CHandlingData", "strHandlingFlags", vehicleflags)
 		    end
 			if clutch then
 		        SetControlNormal(0, 21, clutch+0.0)
@@ -85,6 +84,12 @@ Citizen.CreateThread(function()
 					SetVehicleClutch(vehicle,1.0)
 				else
 					SetVehicleClutch(vehicle,1.0 - clutch+0.0)
+				end
+				if clutch > 0.1 then
+					SetVehicleHandlingFloat(vehicle , "CHandlingData", "fDriveInertia", 1.0)
+					SetVehicleHandlingInt(vehicle , "CHandlingData", "strHandlingFlags", vehicleflags+0x10)
+				else
+					SetVehicleHandlingInt(vehicle , "CHandlingData", "strHandlingFlags", vehicleflags)
 				end
 		    end
 		elseif wheels then

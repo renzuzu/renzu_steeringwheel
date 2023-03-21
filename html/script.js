@@ -91,7 +91,7 @@ window.addEventListener('message', (event) => {
             hasWheels = true
             InvervalID = setInterval(function() {
                 SteeringWheelsApi()
-            }, 50)
+            }, 5)
         } else if (!event.data.apistart) {
             clearInterval(InvervalID);
             hasWheels = false
