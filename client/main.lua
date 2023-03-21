@@ -87,7 +87,7 @@ Citizen.CreateThread(function()
 				end
 				if clutch > 0.1 then
 					SetVehicleHandlingFloat(vehicle , "CHandlingData", "fDriveInertia", 1.0)
-					SetVehicleHandlingInt(vehicle , "CHandlingData", "strHandlingFlags", vehicleflags+0x10)
+					SetVehicleHandlingInt(vehicle , "CHandlingData", "strHandlingFlags", vehicleflags+0x10+0x100)
 				else
 					SetVehicleHandlingInt(vehicle , "CHandlingData", "strHandlingFlags", vehicleflags)
 				end
